@@ -2,7 +2,7 @@ version     = "9.9.9"
 author      = "Nim"
 description = "Python compiled native module"
 license     = "MIT"
-const name = "faster_than_requests"  # Module name and file name (Must be the same).
+const name = "python_native"  # Module name and file name (Must be the same).
 
 
 
