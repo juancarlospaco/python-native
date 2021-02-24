@@ -22,12 +22,13 @@ task setup, "Generating Optimized Native Module":
     pyexe = pyX
   elif pyexe.len == 0:
     pyexe = py2
+    echo "WARNING: Can not find Python3 executable, using legacy Python2 as fallback."
   else:
     echo "ERROR: Can not find Python executable."
   const path = gorge(pyexe & " -m site --user-site").strip
 
   try:
-    selfExec("compile -d:ssl -d:lto -d:strip -d:danger -d:noSignalHandler -d:nimBinaryStdFiles -d:nimDisableCertificateValidation --app:lib --gc:arc --threads:on --listFullPaths:off --excessiveStackTrace:off --exceptions:goto --passL:'-ffast-math -fsingle-precision-constant -march=native' --out:$1 $2".format(
+    selfExec("compile -d:ssl -d:lto -d:strip -d:danger -d:noSignalHandler -d:nimBinaryStdFiles -d:nimDisableCertificateValidation --app:lib --gc:arc --threads:on --listFullPaths:off --excessiveStackTrace:off --exceptions:goto --passL:'-ffast-math -fsingle-precision-constant -march=native' --out:'$1' '$2'".format(
       path / file, "src" / name & ".nim"
     ))
   except:
