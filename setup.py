@@ -1,4 +1,5 @@
 import os, sys, subprocess, setuptools, platform
+from setuptools.command.install import install
 
 git_repo = "https://github.com/juancarlospaco/python-native.git"
 
